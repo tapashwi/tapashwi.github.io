@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clear Explainer — Daily Tech & AI Explained</title>
+  <meta name="description" content="One clear explainer video every day. Tech, AI, and culture — explained in under a minute, across all platforms.">
+  <meta property="og:title" content="Clear Explainer — Daily Tech & AI Explained">
+  <meta property="og:description" content="One clear explainer every day. Subscribe for daily insights.">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="/assets/logo.svg">
+  <link rel="apple-touch-icon" href="/assets/logo-256.png">
+  <style>
+    :root {
+      --bg: #070b12;
+      --bg-card: #0b1220;
+      --ink: #dbe7f3;
+      --muted: #7e93a8;
+      --line: #1b2837;
+      --teal: #2fe6bf;
+      --teal-dim: #1a8f78;
+      --gold: #f0b83d;
+      --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.6 var(--sans);
+      min-height: 100vh;
+    }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 1rem; }
+
+    /* Header & Hero */
+    header {
+      padding: 3rem 0;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .logo-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .logo-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 16px;
+    }
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    h1 em {
+      color: var(--teal);
+      font-style: normal;
+    }
+    .tagline {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--teal);
+      color: #04241d;
+    }
+    .btn-primary:hover {
+      background: var(--teal-dim);
+    }
+    .btn-secondary {
+      border-color: var(--line);
+      color: var(--ink);
+    }
+    .btn-secondary:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    /* Video Section */
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    section:last-of-type {
+      border-bottom: none;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .video-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    .video-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-2px);
+    }
+    .video-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, var(--line) 0%, var(--bg) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 2.5rem;
+    }
+    .video-info {
+      padding: 1rem;
+    }
+    .video-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .video-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .platform-badges {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .platform-badge {
+      display: inline-block;
+      padding: 0.3rem 0.6rem;
+      background: var(--line);
+      border-radius: 4px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--teal);
+    }
+    .platform-badge.success {
+      background: rgba(47, 230, 191, 0.15);
+    }
+    .platform-badge.fail {
+      background: rgba(255, 100, 100, 0.15);
+      color: #ff6464;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Social Links */
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+    .social-link {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      text-decoration: none;
+      color: var(--ink);
+      transition: all 0.2s;
+    }
+    .social-link:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+    .social-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Loading */
+    .loading {
+      text-align: center;
+      color: var(--muted);
+      padding: 2rem;
+    }
+    .loader {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--line);
+      border-top-color: var(--teal);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 3rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.2rem; }
+      .cta-group { flex-direction: column; }
+      .btn { width: 100%; text-align: center; }
+      .video-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-group">
+        <img src="/assets/logo-256.png" alt="Clear Explainer" class="logo-img">
+      </div>
+      <h1>Clear <em>Explainer</em></h1>
+      <p class="tagline">One video every day. Tech, AI, culture — explained clearly. Under a minute.</p>
+      <div class="cta-group">
+        <a href="https://www.youtube.com/@tapashwibaskota1790" class="btn btn-primary" target="_blank">▶ Subscribe on YouTube</a>
+        <a href="/blog/" class="btn btn-secondary">Read Daily Briefings</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Latest Videos</h2>
+      <div id="video-container" class="video-grid">
+        <div class="loading">
+          <div class="loader"></div>
+          <p>Loading videos...</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Platform Stats</h2>
+      <div class="stats-grid" id="stats-container">
+        <div class="stat-card">
+          <div class="stat-value">—</div>
+          <div class="stat-label">Total Videos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">—</div>
+          <div class="stat-label">Publishing Rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">—</div>
+          <div class="stat-label">Avg Success</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">—</div>
+          <div class="stat-label">Topics Covered</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Follow Clear Explainer</h2>
+      <div class="social-grid">
+        <a href="https://www.youtube.com/@tapashwibaskota1790" class="social-link" target="_blank">
+          <div class="social-icon">▶</div>
+          <div>YouTube</div>
+        </a>
+        <a href="https://www.tiktok.com/@clear.explainer" class="social-link" target="_blank">
+          <div class="social-icon">🎵</div>
+          <div>TikTok</div>
+        </a>
+        <a href="https://www.instagram.com/clear.explainer" class="social-link" target="_blank">
+          <div class="social-icon">📸</div>
+          <div>Instagram</div>
+        </a>
+        <a href="/blog/" class="social-link">
+          <div class="social-icon">✍</div>
+          <div>Blog</div>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      © Clear Explainer · AI-generated daily explainers · <a href="/dashboard/" style="color: var(--muted)">⚙ Dashboard</a>
+    </footer>
+  </div>
+
+  <script>
+    // Fetch and display videos from publish log
+    async function loadVideos() {
+      try {
+        // First, fetch from backend API
+        const response = await fetch('/api/publish-log', { method: 'GET' });
+
+        if (!response.ok) {
+          // Fallback: load local JSON if API doesn't exist yet
+          throw new Error('API not available');
+        }
+
+        const data = await response.json();
+        const logs = Array.isArray(data) ? data : data.logs || [];
+
+        if (logs.length === 0) {
+          document.getElementById('video-container').innerHTML =
+            '<p style="color: var(--muted); text-align: center;">No videos published yet.</p>';
+          return;
+        }
+
+        // Display latest 6 videos
+        const latestVideos = logs.slice(-6).reverse();
+        const html = latestVideos.map(log => {
+          const platforms = Object.entries(log.results || {})
+            .filter(([k, v]) => v && k !== 'blog')
+            .map(([name, result]) => {
+              const success = result.success || false;
+              const platform = result.platform || name;
+              return `
+                <a href="${result.url || '#'}" class="platform-badge ${success ? 'success' : 'fail'}"
+                   target="_blank" title="${success ? 'Posted' : 'Failed'}">
+                  ${platform}
+                </a>
+              `;
+            })
+            .join('');
+
+          return `
+            <div class="video-card">
+              <div class="video-thumb">🎬</div>
+              <div class="video-info">
+                <div class="video-title">${log.title || 'Untitled'}</div>
+                <div class="video-meta">${new Date(log.timestamp).toLocaleDateString()}</div>
+                <div class="platform-badges">${platforms || '<span class="platform-badge">Loading...</span>'}</div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        document.getElementById('video-container').innerHTML = html;
+
+        // Update stats
+        const totalVideos = logs.length;
+        const successCount = logs.filter(log => {
+          const stats = log.stats || {};
+          return stats.success > 0;
+        }).length;
+        const successRate = totalVideos > 0 ? Math.round((successCount / totalVideos) * 100) : 0;
+        const uniqueTopics = new Set(logs.map(log => log.title?.split(' ')[0]).filter(Boolean)).size;
+
+        document.getElementById('stats-container').innerHTML = `
+          <div class="stat-card">
+            <div class="stat-value">${totalVideos}</div>
+            <div class="stat-label">Total Videos</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">Daily</div>
+            <div class="stat-label">Publishing Rate</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">${successRate}%</div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">${uniqueTopics}</div>
+            <div class="stat-label">Topics Covered</div>
+          </div>
+        `;
+      } catch (error) {
+        console.log('API fallback:', error.message);
+        // Graceful fallback if API not available
+        document.getElementById('video-container').innerHTML = `
+          <p style="color: var(--muted); text-align: center; grid-column: 1/-1;">
+            Videos loading... Check back soon for the latest content.
+          </p>
+        `;
+      }
+    }
+
+    // Load on page ready
+    document.addEventListener('DOMContentLoaded', loadVideos);
+
+    // Refresh every 60 seconds
+    setInterval(loadVideos, 60000);
+  </script>
+</body>
+</html>

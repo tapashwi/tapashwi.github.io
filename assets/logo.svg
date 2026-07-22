@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1526"/>
+      <stop offset="1" stop-color="#070b12"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3ff2cc"/>
+      <stop offset="1" stop-color="#1fc9a4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" rx="224" fill="url(#bg)"/>
+  <!-- speech bubble -->
+  <path d="M512 200c-176 0-312 118-312 268 0 86 46 162 118 211l-30 118c-4 16 13 29 27 20l134-84c20 3 41 4 63 4 176 0 312-118 312-269S688 200 512 200z"
+        fill="none" stroke="url(#teal)" stroke-width="44" stroke-linejoin="round"/>
+  <!-- play button inside bubble -->
+  <path d="M448 356l190 112-190 112z" fill="url(#teal)"/>
+  <!-- clarity underline -->
+  <rect x="352" y="880" width="320" height="34" rx="17" fill="url(#teal)" opacity="0.9"/>
+</svg>

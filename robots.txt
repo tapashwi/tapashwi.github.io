@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://clearexplainer.vercel.app/sitemap.xml
