@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Australian Income Tax Calculator 2025–26 (with Medicare levy &amp; LITO)</title>
+<meta name="description" content="Work out income tax, the low income tax offset, Medicare levy and take-home pay for 2025–26 Australian residents. Free, instant, no sign-up.">
+<link rel="canonical" href="https://tapashwi.github.io/tools/australian-income-tax-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Australian Income Tax Calculator 2025–26 (with Medicare levy &amp; LITO)">
+<meta property="og:description" content="Work out income tax, the low income tax offset, Medicare levy and take-home pay for 2025–26 Australian residents. Free, instant, no sign-up.">
+<meta property="og:url" content="https://tapashwi.github.io/tools/australian-income-tax-calculator/">
+<meta property="og:image" content="https://tapashwi.github.io/assets/banner-2048x1152.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#070b12">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/tools.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Australian Income Tax Calculator 2025–26", "url": "https://tapashwi.github.io/tools/australian-income-tax-calculator/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "AUD"}, "description": "Work out income tax, the low income tax offset, Medicare levy and take-home pay for 2025–26 Australian residents. Free, instant, no sign-up."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much tax do I pay on $100,000 in Australia in 2025–26?", "acceptedAnswer": {"@type": "Answer", "text": "Income tax is $20,788, and the low income tax offset is nil at that income. Add the $2,000 Medicare levy for a total of $22,788, leaving about $77,212."}}, {"@type": "Question", "name": "Does moving into a higher tax bracket lower my take-home pay?", "acceptedAnswer": {"@type": "Answer", "text": "No. The higher rate applies only to the dollars above the bracket threshold, so every extra dollar still leaves you better off."}}, {"@type": "Question", "name": "Who pays no Medicare levy?", "acceptedAnswer": {"@type": "Answer", "text": "For 2025–26, singles with taxable income of $28,011 or less pay no levy, and those up to $35,013 pay a reduced amount. Some people who aren't entitled to Medicare can claim an exemption with a Medicare Entitlement Statement."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Tools", "item": "https://tapashwi.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Australian Income Tax Calculator 2025–26", "item": "https://tapashwi.github.io/tools/australian-income-tax-calculator/"}]}</script>
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="/">Clear <em>Explainer</em> Tools</a>
+  <nav><a href="/">All tools</a><a href="https://explainer.tapaswibaskota.com.np/news">News</a><a href="https://explainer.tapaswibaskota.com.np/blog">Explainers</a></nav>
+</div></header>
+<main class="wrap">
+<p class="crumbs"><a href="/">Tools</a> › Australian Income Tax Calculator 2025–26</p>
+<h1>Australian Income Tax Calculator 2025–26</h1>
+<p class="lede">Enter your taxable income for 1 July 2025 – 30 June 2026. You get the tax on each slice of income, the low income tax offset, the Medicare levy and what you keep.</p>
+<form class="card" id="f" novalidate>
+  <label for="income">Taxable income for the year (AUD)</label>
+  <input id="income" inputmode="decimal" value="65000" autocomplete="off">
+  <div class="err" id="err" role="alert"></div>
+  <div class="results" aria-live="polite">
+    <div class="stat hero"><div class="k">Take-home pay</div><div class="v" id="take">–</div></div>
+    <div class="stat"><div class="k">Total tax</div><div class="v" id="total">–</div></div>
+    <div class="stat"><div class="k">Average rate</div><div class="v" id="avg">–</div></div>
+    <div class="stat"><div class="k">Marginal rate (incl. Medicare)</div><div class="v" id="marg">–</div></div>
+  </div>
+  <div class="table-scroll"><table>
+    <tbody>
+      <tr><td>Income tax on brackets</td><td id="t1">–</td></tr>
+      <tr><td>Less low income tax offset</td><td id="t2">–</td></tr>
+      <tr><td>Tax after offsets</td><td id="t3">–</td></tr>
+      <tr><td>Medicare levy</td><td id="t4">–</td></tr>
+      <tr><th>Total</th><th id="t5">–</th></tr>
+      <tr><td>Per fortnight take-home</td><td id="fn">–</td></tr>
+    </tbody>
+  </table></div>
+</form>
+<div class="ad" data-slot="tool-mid"></div>
+<article class="prose"><h2>How the calculation works</h2>
+<p>Australia taxes income in slices. Each rate applies only to the dollars inside its band, so moving into a higher bracket never makes your whole income more expensive. For 2025–26 the resident rates are:</p>
+<div class="table-scroll"><table>
+  <thead><tr><th>Taxable income</th><th>Rate on this slice</th></tr></thead>
+  <tbody>
+    <tr><td>$0 – $18,200</td><td>0%</td></tr>
+    <tr><td>$18,201 – $45,000</td><td>16%</td></tr>
+    <tr><td>$45,001 – $135,000</td><td>30%</td></tr>
+    <tr><td>$135,001 – $190,000</td><td>37%</td></tr>
+    <tr><td>$190,001 and over</td><td>45%</td></tr>
+  </tbody>
+</table></div>
+<p>Two adjustments follow. The <strong>low income tax offset</strong> is worth $700 up to $37,500, falls by 5 cents per dollar to $325 at $45,000, then by 1.5 cents per dollar until it runs out at $66,667. It can only reduce tax to zero, never below. The <strong>Medicare levy</strong> is 2% of taxable income. Singles earning $28,011 or less pay none, and between $28,011 and $35,013 it phases in at 10 cents per dollar over the lower threshold.</p>
+<p>Put together, a single resident pays no income tax until about $22,575, because the offset cancels the 16% on the first $4,375 above the tax-free threshold.</p>
+<h3>Worked example: $65,771</h3>
+<p>16% of $26,800 ($4,288) plus 30% of $20,771 ($6,231.30) is $10,519.30. The offset has almost run out at this income: $325 − 1.5% × $20,771 ≈ $13.44. Medicare levy is 2% × $65,771 = $1,315.42.</p>
+<p class="note">Not included: the Medicare levy surcharge (for higher earners without private hospital cover), HELP/HECS repayments, the seniors offset, family Medicare thresholds and part-year residency. This is an estimate, not tax advice. Your notice of assessment is the final word.</p></article>
+<h2>Questions people ask</h2>
+<details><summary>How much tax do I pay on $100,000 in Australia in 2025–26?</summary><p>Income tax is $20,788, and the low income tax offset is nil at that income. Add the $2,000 Medicare levy for a total of $22,788, leaving about $77,212.</p></details>
+<details><summary>Does moving into a higher tax bracket lower my take-home pay?</summary><p>No. The higher rate applies only to the dollars above the bracket threshold, so every extra dollar still leaves you better off.</p></details>
+<details><summary>Who pays no Medicare levy?</summary><p>For 2025–26, singles with taxable income of $28,011 or less pay no levy, and those up to $35,013 pay a reduced amount. Some people who aren&#x27;t entitled to Medicare can claim an exemption with a Medicare Entitlement Statement.</p></details>
+<h2>Sources</h2><ul class="note"><li><a href="https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents" rel="noopener">ATO — tax rates for Australian residents</a></li><li><a href="https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/low-income-tax-offset" rel="noopener">ATO — low income tax offset</a></li><li><a href="https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners" rel="noopener">ATO — Medicare levy reduction for low-income earners</a></li></ul>
+<section class="cta">
+  <p><strong>Want the story behind the numbers?</strong> Clear Explainer publishes a daily news briefing and plain-English explainers on money, tech and the world.</p>
+  <a class="btn" href="https://explainer.tapaswibaskota.com.np/news">Read today's briefing</a>
+</section>
+<h2>More free tools</h2>
+<ul class="tool-list"><li><a href="/tools/compound-interest-calculator/"><strong>Compound Interest Calculator</strong><span>See how savings and monthly contributions grow, year by year.</span></a></li>
+<li><a href="/tools/percentage-calculator/"><strong>Percentage Calculator</strong><span>X% of Y, what percent one number is of another, and percentage change.</span></a></li>
+<li><a href="/tools/days-between-dates/"><strong>Days Between Dates</strong><span>Count calendar days and weekdays between two dates.</span></a></li></ul>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <p>Free tools from <a href="https://explainer.tapaswibaskota.com.np/">Clear Explainer</a>: explainers and a daily news briefing, written to be checked.
+  Calculations run in your browser. Nothing you type is sent anywhere.</p>
+  <p><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+</div></footer>
+<script src="/assets/site-config.js"></script>
+<script src="/assets/calc/au-tax.js"></script>
+<script src="/assets/tools-page-au-tax.js" defer></script>
+<script src="/assets/tools.js"></script>
+</body>
+</html>

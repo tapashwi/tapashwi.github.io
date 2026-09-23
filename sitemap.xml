@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://tapashwi.github.io/</loc></url>
-  <url><loc>https://tapashwi.github.io/blog/</loc></url>
+  <url><loc>https://tapashwi.github.io/tools/australian-income-tax-calculator/</loc></url>
+  <url><loc>https://tapashwi.github.io/tools/compound-interest-calculator/</loc></url>
+  <url><loc>https://tapashwi.github.io/tools/percentage-calculator/</loc></url>
+  <url><loc>https://tapashwi.github.io/tools/word-counter/</loc></url>
+  <url><loc>https://tapashwi.github.io/tools/days-between-dates/</loc></url>
   <url><loc>https://tapashwi.github.io/blog/posts/2026-07-15-i-fired-my-5kmonth-agency.html</loc></url>
   <url><loc>https://tapashwi.github.io/blog/posts/2026-07-15-i-tested-every-ai-model-the-winner-wasnt-gpt-4.html</loc></url>
 </urlset>

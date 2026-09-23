@@ -1,0 +1,18 @@
+name: Tool tests
+
+on:
+  pull_request:
+  workflow_dispatch: {}
+
+jobs:
+  calc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      # The calculators' maths (tax brackets, offsets, compounding, date counts)
+      - run: node --test tests/calc.test.js
+      # Generated pages must match the generator (edit scripts/build_tools.py, not the HTML)
+      - run: python3 scripts/build_tools.py && git diff --exit-code -- index.html tools sitemap.xml assets/tools-page-*.js

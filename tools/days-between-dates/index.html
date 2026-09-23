@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Days Between Dates Calculator — Calendar Days &amp; Weekdays</title>
+<meta name="description" content="Count the days, weeks and weekdays between two dates, with or without the end date. Handles leap years. Free and instant.">
+<link rel="canonical" href="https://tapashwi.github.io/tools/days-between-dates/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Days Between Dates Calculator — Calendar Days &amp; Weekdays">
+<meta property="og:description" content="Count the days, weeks and weekdays between two dates, with or without the end date. Handles leap years. Free and instant.">
+<meta property="og:url" content="https://tapashwi.github.io/tools/days-between-dates/">
+<meta property="og:image" content="https://tapashwi.github.io/assets/banner-2048x1152.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#070b12">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/tools.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Days Between Dates", "url": "https://tapashwi.github.io/tools/days-between-dates/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "AUD"}, "description": "Count the days, weeks and weekdays between two dates, with or without the end date. Handles leap years. Free and instant."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many days are in the 2025–26 financial year?", "acceptedAnswer": {"@type": "Answer", "text": "365. 1 July 2025 to 30 June 2026 has no 29 February, so counting both ends gives 365 days."}}, {"@type": "Question", "name": "Should I include the end date?", "acceptedAnswer": {"@type": "Answer", "text": "Include it when you're counting days covered, such as leave or residency days. Leave it out for elapsed time, such as how long until an event."}}, {"@type": "Question", "name": "Are public holidays excluded from weekdays?", "acceptedAnswer": {"@type": "Answer", "text": "No. Only Saturdays and Sundays are excluded, because public holidays vary by state."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Tools", "item": "https://tapashwi.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Days Between Dates", "item": "https://tapashwi.github.io/tools/days-between-dates/"}]}</script>
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="/">Clear <em>Explainer</em> Tools</a>
+  <nav><a href="/">All tools</a><a href="https://explainer.tapaswibaskota.com.np/news">News</a><a href="https://explainer.tapaswibaskota.com.np/blog">Explainers</a></nav>
+</div></header>
+<main class="wrap">
+<p class="crumbs"><a href="/">Tools</a> › Days Between Dates</p>
+<h1>Days Between Dates</h1>
+<p class="lede">Pick two dates. You get calendar days, weeks and weekdays (Monday to Friday), with the option to count both the start and end date.</p>
+<form class="card" id="f" novalidate>
+  <div class="grid">
+    <div><label for="a">Start date</label><input id="a" type="date" value="2025-07-01"></div>
+    <div><label for="b">End date</label><input id="b" type="date" value="2026-06-30"></div>
+  </div>
+  <label class="check"><input id="inc" type="checkbox" checked> Include the end date (count both days)</label>
+  <div class="err" id="err" role="alert"></div>
+  <div class="results" aria-live="polite">
+    <div class="stat hero"><div class="k">Calendar days</div><div class="v" id="d">–</div></div>
+    <div class="stat"><div class="k">Weeks + days</div><div class="v" id="wk">–</div></div>
+    <div class="stat"><div class="k">Weekdays (Mon–Fri)</div><div class="v" id="wd">–</div></div>
+  </div>
+</form>
+<div class="ad" data-slot="tool-mid"></div>
+<article class="prose"><h2>Counting days correctly</h2>
+<p>The one choice that changes the answer is whether you count the end date. From 1 July to 3 July is <strong>2 days</strong> apart, but <strong>3 days</strong> if you're counting days covered, like nights in a hotel versus days on a booking. Periods measured "from" one date "to" another in forms and contracts often count both days, so the box is ticked by default. Untick it for plain elapsed time.</p>
+<p>Dates are worked out in UTC, so a daylight-saving change can't make a day disappear or appear twice. Leap years are handled: 2028 has a 29 February, 2026 does not.</p>
+<h3>Example: part of a financial year</h3>
+<p>1 July 2025 to 3 April 2026, counting both dates, is 277 days. This kind of count matters for things like part-year tax residency or the Medicare levy exemption, where the number of days is entered on a form.</p>
+<p class="note">Weekdays exclude Saturdays and Sundays only. Public holidays differ by state and are not removed.</p></article>
+<h2>Questions people ask</h2>
+<details><summary>How many days are in the 2025–26 financial year?</summary><p>365. 1 July 2025 to 30 June 2026 has no 29 February, so counting both ends gives 365 days.</p></details>
+<details><summary>Should I include the end date?</summary><p>Include it when you&#x27;re counting days covered, such as leave or residency days. Leave it out for elapsed time, such as how long until an event.</p></details>
+<details><summary>Are public holidays excluded from weekdays?</summary><p>No. Only Saturdays and Sundays are excluded, because public holidays vary by state.</p></details>
+
+<section class="cta">
+  <p><strong>Want the story behind the numbers?</strong> Clear Explainer publishes a daily news briefing and plain-English explainers on money, tech and the world.</p>
+  <a class="btn" href="https://explainer.tapaswibaskota.com.np/news">Read today's briefing</a>
+</section>
+<h2>More free tools</h2>
+<ul class="tool-list"><li><a href="/tools/australian-income-tax-calculator/"><strong>Australian Income Tax Calculator 2025–26</strong><span>Tax, Medicare levy and take-home pay on any income, using the 2025–26 rates.</span></a></li>
+<li><a href="/tools/word-counter/"><strong>Word Counter &amp; Reading Time</strong><span>Words, characters, sentences, and how long it takes to read or say aloud.</span></a></li>
+<li><a href="/tools/percentage-calculator/"><strong>Percentage Calculator</strong><span>X% of Y, what percent one number is of another, and percentage change.</span></a></li></ul>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <p>Free tools from <a href="https://explainer.tapaswibaskota.com.np/">Clear Explainer</a>: explainers and a daily news briefing, written to be checked.
+  Calculations run in your browser. Nothing you type is sent anywhere.</p>
+  <p><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+</div></footer>
+<script src="/assets/site-config.js"></script>
+<script src="/assets/calc/dates.js"></script>
+<script src="/assets/tools-page-dates.js" defer></script>
+<script src="/assets/tools.js"></script>
+</body>
+</html>
