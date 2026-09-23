@@ -23,7 +23,7 @@ TOOLS = [
         "slug": "australian-income-tax-calculator",
         "name": "Australian Income Tax Calculator 2025–26",
         "short": "Tax, Medicare levy and take-home pay on any income, using the 2025–26 rates.",
-        "title": "Australian Income Tax Calculator 2025–26 (with Medicare levy & LITO)",
+        "title": "Australian Income Tax Calculator 2025–26 | Medicare Levy & LITO",
         "description": "Work out income tax, the low income tax offset, Medicare levy and take-home pay for 2025–26 Australian residents. Free, instant, no sign-up.",
         "lede": "Enter your taxable income for 1 July 2025 – 30 June 2026. You get the tax on each slice of income, the low income tax offset, the Medicare levy and what you keep.",
         "calc": "au-tax",
@@ -88,7 +88,7 @@ CE.bind($('f'), function () {
             ("Does moving into a higher tax bracket lower my take-home pay?", "No. The higher rate applies only to the dollars above the bracket threshold, so every extra dollar still leaves you better off."),
             ("Who pays no Medicare levy?", "For 2025–26, singles with taxable income of $28,011 or less pay no levy, and those up to $35,013 pay a reduced amount. Some people who aren't entitled to Medicare can claim an exemption with a Medicare Entitlement Statement."),
         ],
-        "related": ["compound-interest-calculator", "percentage-calculator", "days-between-dates"],
+        "related": ["help-repayment-calculator", "super-guarantee-calculator", "pay-calculator"],
         "sources": [
             ("ATO — tax rates for Australian residents", "https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents"),
             ("ATO — low income tax offset", "https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/low-income-tax-offset"),
@@ -304,6 +304,212 @@ CE.bind($('f'), function () {
     },
 ]
 
+NEW_TOOLS = [
+    {
+        "slug": "gst-calculator",
+        "name": "GST Calculator (Australia)",
+        "short": "Add 10% GST to a price, or work out the GST inside a price.",
+        "title": "GST Calculator Australia — Add or Remove 10% GST",
+        "description": "Add GST to a price or remove GST from a GST-inclusive amount. Shows the 1/11 rule, so you don't make the common 'minus 10%' mistake.",
+        "lede": "Type an amount and choose whether it already includes GST. You get the GST, the price without it and the price with it.",
+        "calc": "gst",
+        "form": """
+<form class="card" id="f" novalidate>
+  <div class="grid">
+    <div><label for="amt">Amount ($)</label><input id="amt" inputmode="decimal" value="110"></div>
+    <div><label for="mode">This amount…</label>
+      <select id="mode"><option value="remove" selected>includes GST (remove it)</option><option value="add">excludes GST (add it)</option></select></div>
+  </div>
+  <div class="err" id="err" role="alert"></div>
+  <div class="results" aria-live="polite">
+    <div class="stat hero"><div class="k">GST</div><div class="v" id="g">–</div></div>
+    <div class="stat"><div class="k">Excluding GST</div><div class="v" id="ex">–</div></div>
+    <div class="stat"><div class="k">Including GST</div><div class="v" id="inc">–</div></div>
+  </div>
+</form>""",
+        "script": """
+var $ = function (id) { return document.getElementById(id); };
+CE.bind($('f'), function () {
+  var v = $('amt').value.replace(/[$,\\s]/g, '') || 0;
+  var r = $('mode').value === 'add' ? CE.gst.add(v) : CE.gst.remove(v);
+  $('g').textContent = CE.money(r.gst);
+  $('ex').textContent = CE.money(r.exclusive);
+  $('inc').textContent = CE.money(r.inclusive);
+}, $('err'));""",
+        "explainer": """
+<h2>Why removing GST isn't "minus 10%"</h2>
+<p>GST is 10% of the price <em>before</em> GST. So a GST-inclusive price is 110% of the base, and the GST inside it is 10 ÷ 110 = <strong>1/11</strong> of the total. On a $110 bill the GST is $10, but 10% of $110 would be $11, which is wrong.</p>
+<ul>
+  <li><strong>Add GST:</strong> price × 1.1</li>
+  <li><strong>GST inside a price:</strong> price ÷ 11</li>
+  <li><strong>Price without GST:</strong> price ÷ 1.1</li>
+</ul>
+<p class="note">Some things are GST-free, including most basic food, many health and education services, and exports. Businesses turning over less than $75,000 a year don't have to register for GST.</p>""",
+        "faqs": [
+            ("How do I calculate GST on a price?", "Multiply the price before GST by 0.1. A $200 item has $20 GST and costs $220 including GST."),
+            ("How do I remove GST from a total?", "Divide the GST-inclusive total by 11 to get the GST, or by 1.1 to get the price without GST. $330 includes $30 GST."),
+            ("Is GST always 10% in Australia?", "Yes, the rate is 10%, but some goods and services are GST-free, so not every price includes it."),
+        ],
+        "related": ["percentage-calculator", "pay-calculator", "australian-income-tax-calculator"],
+        "sources": [("ATO — GST", "https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst")],
+    },
+    {
+        "slug": "super-guarantee-calculator",
+        "name": "Super Guarantee Calculator 2025–26",
+        "short": "Your employer's 12% super, and room left under the $30,000 cap.",
+        "title": "Super Guarantee Calculator 2025–26 (12% SG & $30,000 Cap)",
+        "description": "Work out your employer's 12% super guarantee for 2025–26, how salary sacrifice adds up, and how much room is left under the $30,000 concessional cap.",
+        "lede": "Enter your salary before super. Add any salary sacrifice to see your total before-tax contributions against the 2025–26 cap.",
+        "calc": "super",
+        "form": """
+<form class="card" id="f" novalidate>
+  <div class="grid">
+    <div><label for="sal">Salary, excluding super ($ a year)</label><input id="sal" inputmode="decimal" value="85000"></div>
+    <div><label for="ss">Salary sacrifice to super ($ a year)</label><input id="ss" inputmode="decimal" value="0"></div>
+  </div>
+  <div class="err" id="err" role="alert"></div>
+  <div class="results" aria-live="polite">
+    <div class="stat hero"><div class="k">Employer super (12%)</div><div class="v" id="sg">–</div></div>
+    <div class="stat"><div class="k">Per fortnight</div><div class="v" id="fn">–</div></div>
+    <div class="stat"><div class="k">Total concessional</div><div class="v" id="tot">–</div></div>
+    <div class="stat"><div class="k">Room under $30,000 cap</div><div class="v" id="room">–</div></div>
+  </div>
+  <p class="note" id="warn"></p>
+</form>""",
+        "script": """
+var $ = function (id) { return document.getElementById(id); };
+CE.bind($('f'), function () {
+  var r = CE.superGuarantee.calc({ salary: $('sal').value.replace(/[$,\\s]/g, '') || 0, salarySacrifice: $('ss').value.replace(/[$,\\s]/g, '') || 0 });
+  $('sg').textContent = CE.money(r.employerSG);
+  $('fn').textContent = CE.money(r.perFortnight);
+  $('tot').textContent = CE.money(r.concessionalTotal);
+  $('room').textContent = r.overCap ? 'Over by ' + CE.money(-r.capRemaining) : CE.money(r.capRemaining);
+  $('warn').textContent = r.overCap ? 'Over the cap: the excess is added to your taxable income and taxed at your marginal rate, less a 15% offset. Unused cap from earlier years may cover it if your super balance was under $500,000.' : '';
+}, $('err'));""",
+        "explainer": """
+<h2>How super guarantee works in 2025–26</h2>
+<p>From 1 July 2025, employers must pay <strong>12%</strong> of your ordinary time earnings into super. This is the last step of a rise that started at 9.5% in 2021. It applies to pay dates on or after 1 July 2025, even if the work was done earlier.</p>
+<p>Before-tax contributions, meaning employer super plus salary sacrifice plus any personal contributions you claim a deduction for, share one <strong>concessional cap of $30,000</strong> a year. Inside the cap they're taxed at 15% in the fund, which is usually less than your marginal rate.</p>
+<h3>"Including super" job offers</h3>
+<p>A package of $112,000 including super is a salary of $100,000 plus $12,000 super, because $112,000 ÷ 1.12 = $100,000. Compare offers on the same basis.</p>
+<p class="note">Not covered: the maximum contribution base (a quarterly earnings cap above which employers needn't pay SG), carry-forward of unused cap, and Division 293 tax for incomes over $250,000. General information, not financial advice.</p>""",
+        "faqs": [
+            ("What is the super guarantee rate for 2025–26?", "12% of ordinary time earnings, from 1 July 2025."),
+            ("Does salary sacrifice count towards the cap?", "Yes. Employer super guarantee, salary sacrifice and personal contributions you claim as a deduction all count towards the $30,000 concessional cap."),
+            ("How much super does my employer pay on $85,000?", "12% of $85,000 is $10,200 a year, about $392 a fortnight."),
+        ],
+        "related": ["australian-income-tax-calculator", "pay-calculator", "compound-interest-calculator"],
+        "sources": [("ATO — super guarantee rates", "https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/super-guarantee"),
+                    ("ATO — contributions caps", "https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/contributions-caps")],
+    },
+    {
+        "slug": "help-repayment-calculator",
+        "name": "HELP / HECS Repayment Calculator 2025–26",
+        "short": "Compulsory study loan repayment under the new marginal system.",
+        "title": "HECS / HELP Repayment Calculator 2025–26 (New $67,000 Threshold)",
+        "description": "Compulsory HELP repayment for 2025–26 under the new marginal system: nil up to $67,000, then 15c per dollar above. Counts fringe benefits too.",
+        "lede": "Your compulsory repayment is worked out on repayment income, which can be more than your taxable income. Add fringe benefits and investment losses if you have them.",
+        "calc": "help",
+        "form": """
+<form class="card" id="f" novalidate>
+  <div class="grid">
+    <div><label for="ti">Taxable income ($)</label><input id="ti" inputmode="decimal" value="85000"></div>
+    <div><label for="rfb">Reportable fringe benefits ($)</label><input id="rfb" inputmode="decimal" value="0"></div>
+    <div><label for="rs">Reportable super contributions ($)</label><input id="rs" inputmode="decimal" value="0"></div>
+    <div><label for="nil">Net investment losses ($)</label><input id="nil" inputmode="decimal" value="0"></div>
+  </div>
+  <div class="err" id="err" role="alert"></div>
+  <div class="results" aria-live="polite">
+    <div class="stat hero"><div class="k">Compulsory repayment</div><div class="v" id="rep">–</div></div>
+    <div class="stat"><div class="k">Repayment income</div><div class="v" id="ri">–</div></div>
+    <div class="stat"><div class="k">Share of repayment income</div><div class="v" id="sh">–</div></div>
+  </div>
+</form>""",
+        "script": """
+var $ = function (id) { return document.getElementById(id); };
+var v = function (id) { return $(id).value.replace(/[$,\\s]/g, '') || 0; };
+CE.bind($('f'), function () {
+  var ri = CE.help.repaymentIncome({ taxable: v('ti'), fringeBenefits: v('rfb'), reportableSuper: v('rs'), investmentLosses: v('nil') });
+  var rep = CE.help.repayment(ri);
+  $('rep').textContent = CE.money(rep);
+  $('ri').textContent = CE.money(ri);
+  $('sh').textContent = ri > 0 ? CE.pct(rep / ri) : '0%';
+}, $('err'));""",
+        "explainer": """
+<h2>The new marginal system</h2>
+<p>From 2025–26, compulsory repayments are charged only on income <em>above</em> the threshold, like tax brackets. Before, crossing the threshold meant a percentage of your whole income, so a $1 raise could cost hundreds.</p>
+<div class="table-scroll"><table>
+  <thead><tr><th>Repayment income</th><th>Compulsory repayment</th></tr></thead>
+  <tbody>
+    <tr><td>$0 – $67,000</td><td>Nil</td></tr>
+    <tr><td>$67,001 – $125,000</td><td>15c per $1 over $67,000</td></tr>
+    <tr><td>$125,001 – $179,285</td><td>$8,700 + 17c per $1 over $125,000</td></tr>
+    <tr><td>$179,286 and over</td><td>10% of total repayment income</td></tr>
+  </tbody>
+</table></div>
+<h3>Why repayment income can surprise you</h3>
+<p>Repayment income adds reportable fringe benefits, reportable super contributions and net investment losses to your taxable income. People on salary packaging, common in health, charities and public benevolent institutions, can have repayment income well above their taxable income. Example: $65,771 taxable income plus $29,990 of reportable fringe benefits is $95,761 of repayment income, and a compulsory repayment of about $4,314.</p>
+<p class="note">Compulsory repayments are collected through your tax return. Voluntary repayments are separate. Balances are indexed each year. General information only.</p>""",
+        "faqs": [
+            ("What is the HECS repayment threshold for 2025–26?", "$67,000 of repayment income. Below that there is no compulsory repayment."),
+            ("How much HELP do I repay on $80,000?", "15% of the $13,000 above $67,000, which is $1,950 for the year."),
+            ("Do salary-packaged fringe benefits count?", "Yes. Reportable fringe benefits on your income statement are added to repayment income, even though they aren't taxed."),
+        ],
+        "related": ["australian-income-tax-calculator", "super-guarantee-calculator", "pay-calculator"],
+        "sources": [("ATO — study and training loan repayment thresholds and rates", "https://www.ato.gov.au/tax-rates-and-codes/study-and-training-support-loans-rates-and-repayment-thresholds")],
+    },
+    {
+        "slug": "pay-calculator",
+        "name": "Pay Converter: Hourly, Weekly, Annual",
+        "short": "Turn an hourly rate into a salary, or a salary into an hourly rate.",
+        "title": "Pay Converter — Hourly to Salary, Weekly, Fortnightly & Annual",
+        "description": "Convert pay between hourly, daily, weekly, fortnightly, monthly and annual amounts. Set your own hours per week; the default is a 38-hour week.",
+        "lede": "Enter what you're paid and how often. Everything is converted using your hours per week, with 38 hours as the default.",
+        "calc": "pay",
+        "form": """
+<form class="card" id="f" novalidate>
+  <div class="grid">
+    <div><label for="amt">Pay ($)</label><input id="amt" inputmode="decimal" value="35"></div>
+    <div><label for="per">Per</label>
+      <select id="per"><option value="hourly" selected>Hour</option><option value="daily">Day</option><option value="weekly">Week</option><option value="fortnightly">Fortnight</option><option value="monthly">Month</option><option value="annual">Year</option></select></div>
+    <div><label for="hrs">Hours per week</label><input id="hrs" inputmode="decimal" value="38"></div>
+    <div><label for="dys">Days per week</label><input id="dys" inputmode="decimal" value="5"></div>
+  </div>
+  <div class="err" id="err" role="alert"></div>
+  <div class="results" aria-live="polite">
+    <div class="stat hero"><div class="k">Annual</div><div class="v" id="annual">–</div></div>
+    <div class="stat"><div class="k">Monthly</div><div class="v" id="monthly">–</div></div>
+    <div class="stat"><div class="k">Fortnightly</div><div class="v" id="fortnightly">–</div></div>
+    <div class="stat"><div class="k">Weekly</div><div class="v" id="weekly">–</div></div>
+    <div class="stat"><div class="k">Daily</div><div class="v" id="daily">–</div></div>
+    <div class="stat"><div class="k">Hourly</div><div class="v" id="hourly">–</div></div>
+  </div>
+</form>""",
+        "script": """
+var $ = function (id) { return document.getElementById(id); };
+CE.bind($('f'), function () {
+  var r = CE.pay.convert({ amount: $('amt').value.replace(/[$,\\s]/g, '') || 0, period: $('per').value,
+    hoursPerWeek: $('hrs').value, daysPerWeek: $('dys').value });
+  CE.pay.PERIODS.forEach(function (p) { $(p).textContent = CE.money(r[p]); });
+}, $('err'));""",
+        "explainer": """
+<h2>How the conversion works</h2>
+<p>Everything goes through the annual figure: hourly × hours per week × 52, weekly × 52, fortnightly × 26, monthly × 12. A full-time week in Australia is 38 hours under the National Employment Standards, so that's the default.</p>
+<h3>Why monthly isn't four weeks</h3>
+<p>A year has 52 weeks but 12 months, so a month is about 4.33 weeks. Multiplying weekly pay by 4 understates monthly pay by about 8%.</p>
+<p class="note">These are gross (before-tax) amounts. Casual rates usually include a 25% loading instead of paid leave, so an hourly casual rate and a permanent salary aren't directly comparable.</p>""",
+        "faqs": [
+            ("What is $35 an hour as a salary?", "At 38 hours a week, $35 × 38 × 52 = $69,160 a year, before tax and not counting super."),
+            ("How many working hours are in a year?", "At 38 hours a week, 1,976 hours (38 × 52). Leave and public holidays are paid, so salaried people are paid for all of them."),
+            ("How do I turn a salary into an hourly rate?", "Divide by 52 and then by your weekly hours. $80,000 ÷ 52 ÷ 38 ≈ $40.49 an hour."),
+        ],
+        "related": ["australian-income-tax-calculator", "super-guarantee-calculator", "gst-calculator"],
+        "sources": [("Fair Work Ombudsman — maximum weekly hours", "https://www.fairwork.gov.au/employment-conditions/hours-of-work-breaks-and-rosters/hours-of-work")],
+    },
+]
+
+TOOLS += NEW_TOOLS
+
 BY_SLUG = {t["slug"]: t for t in TOOLS}
 E = html.escape
 
@@ -426,7 +632,7 @@ def hub_page() -> str:
         for t in TOOLS
     )
     title = "Free Calculators & Tools — Clear Explainer"
-    desc = "Free, fast tools that explain their own maths: Australian income tax 2025–26, compound interest, percentages, word count and days between dates. No sign-up."
+    desc = "Free tools that explain their own maths: Australian income tax, HELP, super and GST for 2025–26, pay, compound interest, percentages and more. No sign-up."
     site_ld = {
         "@context": "https://schema.org",
         "@type": "CollectionPage",

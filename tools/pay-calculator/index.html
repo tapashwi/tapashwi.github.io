@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pay Converter — Hourly to Salary, Weekly, Fortnightly &amp; Annual</title>
+<meta name="description" content="Convert pay between hourly, daily, weekly, fortnightly, monthly and annual amounts. Set your own hours per week; the default is a 38-hour week.">
+<link rel="canonical" href="https://tapashwi.github.io/tools/pay-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pay Converter — Hourly to Salary, Weekly, Fortnightly &amp; Annual">
+<meta property="og:description" content="Convert pay between hourly, daily, weekly, fortnightly, monthly and annual amounts. Set your own hours per week; the default is a 38-hour week.">
+<meta property="og:url" content="https://tapashwi.github.io/tools/pay-calculator/">
+<meta property="og:image" content="https://tapashwi.github.io/assets/banner-2048x1152.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#070b12">
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/tools.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Pay Converter: Hourly, Weekly, Annual", "url": "https://tapashwi.github.io/tools/pay-calculator/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "AUD"}, "description": "Convert pay between hourly, daily, weekly, fortnightly, monthly and annual amounts. Set your own hours per week; the default is a 38-hour week."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is $35 an hour as a salary?", "acceptedAnswer": {"@type": "Answer", "text": "At 38 hours a week, $35 × 38 × 52 = $69,160 a year, before tax and not counting super."}}, {"@type": "Question", "name": "How many working hours are in a year?", "acceptedAnswer": {"@type": "Answer", "text": "At 38 hours a week, 1,976 hours (38 × 52). Leave and public holidays are paid, so salaried people are paid for all of them."}}, {"@type": "Question", "name": "How do I turn a salary into an hourly rate?", "acceptedAnswer": {"@type": "Answer", "text": "Divide by 52 and then by your weekly hours. $80,000 ÷ 52 ÷ 38 ≈ $40.49 an hour."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Tools", "item": "https://tapashwi.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Pay Converter: Hourly, Weekly, Annual", "item": "https://tapashwi.github.io/tools/pay-calculator/"}]}</script>
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="/">Clear <em>Explainer</em> Tools</a>
+  <nav><a href="/">All tools</a><a href="https://explainer.tapaswibaskota.com.np/news">News</a><a href="https://explainer.tapaswibaskota.com.np/blog">Explainers</a></nav>
+</div></header>
+<main class="wrap">
+<p class="crumbs"><a href="/">Tools</a> › Pay Converter: Hourly, Weekly, Annual</p>
+<h1>Pay Converter: Hourly, Weekly, Annual</h1>
+<p class="lede">Enter what you&#x27;re paid and how often. Everything is converted using your hours per week, with 38 hours as the default.</p>
+<form class="card" id="f" novalidate>
+  <div class="grid">
+    <div><label for="amt">Pay ($)</label><input id="amt" inputmode="decimal" value="35"></div>
+    <div><label for="per">Per</label>
+      <select id="per"><option value="hourly" selected>Hour</option><option value="daily">Day</option><option value="weekly">Week</option><option value="fortnightly">Fortnight</option><option value="monthly">Month</option><option value="annual">Year</option></select></div>
+    <div><label for="hrs">Hours per week</label><input id="hrs" inputmode="decimal" value="38"></div>
+    <div><label for="dys">Days per week</label><input id="dys" inputmode="decimal" value="5"></div>
+  </div>
+  <div class="err" id="err" role="alert"></div>
+  <div class="results" aria-live="polite">
+    <div class="stat hero"><div class="k">Annual</div><div class="v" id="annual">–</div></div>
+    <div class="stat"><div class="k">Monthly</div><div class="v" id="monthly">–</div></div>
+    <div class="stat"><div class="k">Fortnightly</div><div class="v" id="fortnightly">–</div></div>
+    <div class="stat"><div class="k">Weekly</div><div class="v" id="weekly">–</div></div>
+    <div class="stat"><div class="k">Daily</div><div class="v" id="daily">–</div></div>
+    <div class="stat"><div class="k">Hourly</div><div class="v" id="hourly">–</div></div>
+  </div>
+</form>
+<div class="ad" data-slot="tool-mid"></div>
+<article class="prose"><h2>How the conversion works</h2>
+<p>Everything goes through the annual figure: hourly × hours per week × 52, weekly × 52, fortnightly × 26, monthly × 12. A full-time week in Australia is 38 hours under the National Employment Standards, so that's the default.</p>
+<h3>Why monthly isn't four weeks</h3>
+<p>A year has 52 weeks but 12 months, so a month is about 4.33 weeks. Multiplying weekly pay by 4 understates monthly pay by about 8%.</p>
+<p class="note">These are gross (before-tax) amounts. Casual rates usually include a 25% loading instead of paid leave, so an hourly casual rate and a permanent salary aren't directly comparable.</p></article>
+<h2>Questions people ask</h2>
+<details><summary>What is $35 an hour as a salary?</summary><p>At 38 hours a week, $35 × 38 × 52 = $69,160 a year, before tax and not counting super.</p></details>
+<details><summary>How many working hours are in a year?</summary><p>At 38 hours a week, 1,976 hours (38 × 52). Leave and public holidays are paid, so salaried people are paid for all of them.</p></details>
+<details><summary>How do I turn a salary into an hourly rate?</summary><p>Divide by 52 and then by your weekly hours. $80,000 ÷ 52 ÷ 38 ≈ $40.49 an hour.</p></details>
+<h2>Sources</h2><ul class="note"><li><a href="https://www.fairwork.gov.au/employment-conditions/hours-of-work-breaks-and-rosters/hours-of-work" rel="noopener">Fair Work Ombudsman — maximum weekly hours</a></li></ul>
+<section class="cta">
+  <p><strong>Want the story behind the numbers?</strong> Clear Explainer publishes a daily news briefing and plain-English explainers on money, tech and the world.</p>
+  <a class="btn" href="https://explainer.tapaswibaskota.com.np/news">Read today's briefing</a>
+</section>
+<h2>More free tools</h2>
+<ul class="tool-list"><li><a href="/tools/australian-income-tax-calculator/"><strong>Australian Income Tax Calculator 2025–26</strong><span>Tax, Medicare levy and take-home pay on any income, using the 2025–26 rates.</span></a></li>
+<li><a href="/tools/super-guarantee-calculator/"><strong>Super Guarantee Calculator 2025–26</strong><span>Your employer&#x27;s 12% super, and room left under the $30,000 cap.</span></a></li>
+<li><a href="/tools/gst-calculator/"><strong>GST Calculator (Australia)</strong><span>Add 10% GST to a price, or work out the GST inside a price.</span></a></li></ul>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <p>Free tools from <a href="https://explainer.tapaswibaskota.com.np/">Clear Explainer</a>: explainers and a daily news briefing, written to be checked.
+  Calculations run in your browser. Nothing you type is sent anywhere.</p>
+  <p><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+</div></footer>
+<script src="/assets/site-config.js"></script>
+<script src="/assets/calc/pay.js"></script>
+<script src="/assets/tools-page-pay.js" defer></script>
+<script src="/assets/tools.js"></script>
+</body>
+</html>

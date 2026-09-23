@@ -87,3 +87,44 @@ test('dates: leap years, direction, weekdays, validation', () => {
   assert.throws(() => dates.parse('2025-02-30'), RangeError);
   assert.throws(() => dates.parse('30/02/2025'), RangeError);
 });
+
+const gst = require('../assets/calc/gst.js');
+const sup = require('../assets/calc/super.js');
+const help = require('../assets/calc/help.js');
+const pay = require('../assets/calc/pay.js');
+
+test('GST: add 10% and extract 1/11', () => {
+  assert.deepEqual(gst.add(100), { exclusive: 100, gst: 10, inclusive: 110 });
+  assert.deepEqual(gst.remove(110), { exclusive: 100, gst: 10, inclusive: 110 });
+  assert.equal(gst.remove(99).gst, 9); // not 9.90: removing GST is not "minus 10%"
+  assert.throws(() => gst.add(-1), RangeError);
+});
+
+test('super: 12% SG and the $30,000 concessional cap', () => {
+  const r = sup.calc({ salary: 100000, salarySacrifice: 10000 });
+  assert.equal(r.employerSG, 12000);
+  assert.equal(r.concessionalTotal, 22000);
+  assert.equal(r.capRemaining, 8000);
+  assert.equal(r.overCap, false);
+  assert.equal(sup.calc({ salary: 200000, salarySacrifice: 7000 }).overCap, true);
+  assert.equal(sup.fromPackage(112000), 100000);
+});
+
+test('HELP 2025-26 marginal repayments, continuous at the band edges', () => {
+  assert.equal(help.repayment(67000), 0);
+  assert.equal(help.repayment(80000), 1950);
+  assert.equal(help.repayment(125000), 8700);
+  near(help.repayment(179285), 17928.45);
+  near(help.repayment(179286), 17928.6);
+  assert.equal(help.repayment(200000), 20000);
+  assert.equal(help.repaymentIncome({ taxable: 65771, fringeBenefits: 29990 }), 95761);
+});
+
+test('pay conversion round-trips', () => {
+  const r = pay.convert({ amount: 1000, period: 'weekly' });
+  near(r.annual, 52000);
+  near(r.hourly, 1000 / 38);
+  near(r.fortnightly, 2000);
+  near(pay.convert({ amount: r.hourly, period: 'hourly' }).weekly, 1000);
+  assert.throws(() => pay.convert({ amount: 1, period: 'yearly' }), RangeError);
+});
